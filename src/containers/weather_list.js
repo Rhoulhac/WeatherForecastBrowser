@@ -36,7 +36,7 @@ renderWeather(cityData) {
           {this.props.weather.map(this.renderWeather)}
         </tbody>
       </table>
-    )
+    );
   }
 }
 

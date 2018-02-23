@@ -6,6 +6,7 @@ const fetchWeatherAction = (payload) => ({
   type: FETCH_WEATHER,
   payload: payload
 })
+
 export const FETCH_WEATHER = 'FETCH_WEATHER';
 
 export function fetchWeather(city) {
@@ -16,9 +17,11 @@ export function fetchWeather(city) {
 
     request.then((payload) => {
       dispatch(fetchWeatherAction(payload));
-    }, (error) => {
+    }, error => {
       if (error.request.status == 404){
-        alert("City not found")
+        let enteredCity = city.charAt(0).toUpperCase() + city.slice(1);
+
+        alert(`${enteredCity} is not a valid city. Please try another city name.`)
       } else {
         alert("An error has occured")
       }
